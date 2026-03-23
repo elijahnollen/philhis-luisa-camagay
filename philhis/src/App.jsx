@@ -3,17 +3,6 @@ import { useState } from "react";
 export default function PhilHisLuisaCamagayProfile() {
   const [view, setView] = useState("profile");
 
-  const slides = [
-    {
-      title: "Past Talk",
-      body: "Walang sikreto ang nakaraan na hindi natin pag-uusapan",
-      subtitle: "Tito Boy Abundant",
-      type: "title",
-    },
-  ];
-
-  const currentSlide = 0;
-
   const profile = {
     name: "Ma. Luisa T. Camagay, Ph.D.",
     pronouns: "She/Her",
@@ -65,39 +54,118 @@ export default function PhilHisLuisaCamagayProfile() {
 
   if (view === "slides") {
     return (
-      <div className="min-h-screen w-screen bg-[#0f172a]">
-        <div className="w-screen min-h-screen overflow-hidden">
-          <div className="w-full min-h-screen overflow-hidden">
-            <div className="relative min-h-screen w-full flex items-center justify-center px-6 md:px-12 py-12 text-center bg-[radial-gradient(circle_at_top,_#f59e0b,_#7c3aed_38%,_#0f172a_100%)]">
-              <button
-                onClick={() => setView("profile")}
-                className="absolute top-6 right-8 z-20 px-5 h-10 rounded-full border border-white/35 bg-black/15 text-white text-[14px] font-semibold backdrop-blur-sm shadow-lg hover:bg-black/25 transition"
-              >
-                Exit
-              </button>
+      <div
+        style={{
+          minHeight: "100vh",
+          width: "100%",
+          background:
+            "radial-gradient(circle at top, #f59e0b 0%, #7c3aed 38%, #0f172a 100%)",
+          position: "relative",
+          overflow: "hidden",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "32px",
+          boxSizing: "border-box",
+          fontFamily: "Arial, Helvetica, sans-serif",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0) 65%, rgba(255,255,255,0.14) 100%)",
+          }}
+        />
 
-              <div className="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(135deg,white_0%,transparent_35%,transparent_65%,white_100%)]" />
-              <div className="absolute bottom-6 right-8 pointer-events-none w-40 h-40 rounded-full bg-white/10 blur-2xl" />
-              <div className="absolute top-10 right-16 pointer-events-none w-28 h-28 rounded-full bg-cyan-300/20 blur-2xl" />
+        <div
+          style={{
+            position: "absolute",
+            right: 32,
+            top: 24,
+          }}
+        >
+          <button
+            onClick={() => setView("profile")}
+            style={{
+              padding: "10px 22px",
+              borderRadius: 999,
+              border: "1px solid rgba(255,255,255,0.35)",
+              background: "rgba(0,0,0,0.16)",
+              color: "white",
+              fontWeight: 700,
+              fontSize: 14,
+              cursor: "pointer",
+            }}
+          >
+            Exit
+          </button>
+        </div>
 
-              <div className="relative max-w-5xl">
-                <div className="inline-block px-5 py-2 rounded-full border border-white/25 bg-white/10 text-white/95 text-sm md:text-base font-semibold tracking-wide backdrop-blur-sm shadow-lg">
-                  History • Conversation • Culture
-                </div>
+        <div
+          style={{
+            position: "relative",
+            zIndex: 1,
+            width: "100%",
+            maxWidth: 1200,
+            textAlign: "center",
+            color: "white",
+          }}
+        >
+          <div
+            style={{
+              display: "inline-block",
+              padding: "10px 22px",
+              borderRadius: 999,
+              border: "1px solid rgba(255,255,255,0.28)",
+              background: "rgba(255,255,255,0.10)",
+              fontSize: 16,
+              fontWeight: 700,
+              letterSpacing: 0.4,
+            }}
+          >
+            History • Conversation • Culture
+          </div>
 
-                <div className="mt-6 text-[56px] md:text-[88px] leading-[0.95] font-extrabold tracking-tight text-white drop-shadow-[0_6px_24px_rgba(0,0,0,0.35)]">
-                  {slides[currentSlide].title}
-                </div>
+          <h1
+            style={{
+              marginTop: 28,
+              marginBottom: 0,
+              fontSize: "clamp(56px, 10vw, 120px)",
+              lineHeight: 0.95,
+              fontWeight: 900,
+              textShadow: "0 6px 24px rgba(0,0,0,0.35)",
+            }}
+          >
+            Past Talk
+          </h1>
 
-                <p className="mt-8 text-[24px] md:text-[38px] leading-[1.25] text-white font-semibold max-w-5xl mx-auto drop-shadow-[0_4px_18px_rgba(0,0,0,0.28)]">
-                  “{slides[currentSlide].body}”
-                </p>
+          <p
+            style={{
+              marginTop: 36,
+              marginBottom: 0,
+              fontSize: "clamp(24px, 3.2vw, 42px)",
+              lineHeight: 1.25,
+              fontWeight: 700,
+              maxWidth: 1100,
+              marginInline: "auto",
+              textShadow: "0 4px 18px rgba(0,0,0,0.28)",
+            }}
+          >
+            “Walang sikreto ang nakaraan na hindi natin pag-uusapan”
+          </p>
 
-                <div className="mt-10 text-[26px] md:text-[36px] font-bold tracking-wide text-[#fde68a] drop-shadow-[0_4px_18px_rgba(0,0,0,0.25)]">
-                  {slides[currentSlide].subtitle}
-                </div>
-              </div>
-            </div>
+          <div
+            style={{
+              marginTop: 40,
+              fontSize: "clamp(26px, 2.8vw, 40px)",
+              fontWeight: 800,
+              color: "#fde68a",
+              textShadow: "0 4px 18px rgba(0,0,0,0.25)",
+            }}
+          >
+            Tito Boy Abundant
           </div>
         </div>
       </div>
@@ -214,6 +282,33 @@ export default function PhilHisLuisaCamagayProfile() {
                   <button className="h-10 rounded-lg hover:bg-[#f3f6f8]">Repost</button>
                   <button className="h-10 rounded-lg hover:bg-[#f3f6f8]">Send</button>
                 </div>
+
+                <div className="mt-4 border-t border-[#ebebeb] pt-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="text-[14px] font-semibold text-[#1d2226]">Top comments</div>
+                    <div className="text-[12px] text-[#5e5e5e]">Most relevant</div>
+                  </div>
+
+                  <div className="space-y-3">
+                    {[
+                      { name: "Charl Christopher Peñada", comment: "yas queen!" },
+                      { name: "Krystal Claire Alvarez", comment: "go girl" },
+                      { name: "Elijah Crisehea Nollen", comment: "iconic line" },
+                    ].map((item, index) => (
+                      <div key={index} className="flex gap-3">
+                        <div className="w-9 h-9 rounded-full bg-[#dbeafe] border border-[#bfdbfe] shrink-0" />
+                        <div className="flex-1 rounded-2xl bg-[#f3f2ef] px-4 py-3">
+                          <div className="text-[13px] font-semibold text-[#1d2226]">{item.name}</div>
+                          <div className="text-[14px] text-[#1d2226] mt-0.5">{item.comment}</div>
+                        </div>
+                      </div>
+                    ))}
+
+                    <button className="mt-1 text-[14px] font-semibold text-[#0a66c2] hover:underline">
+                      See more comments
+                    </button>
+                  </div>
+                </div>
               </div>
             </section>
 
@@ -290,7 +385,7 @@ export default function PhilHisLuisaCamagayProfile() {
             <section className="bg-white border border-[#d9d9d9] rounded-xl px-5 py-4 shadow-sm">
               <h3 className="text-[16px] font-semibold">People also viewed</h3>
               <div className="mt-4 space-y-4 text-[14px]">
-                {["Zeus A. Salazar", "Reynaldo C. Ileto", "Ambeth R. Ocampo"].map((name) => (
+                {['Zeus A. Salazar', 'Reynaldo C. Ileto', 'Ambeth R. Ocampo'].map((name) => (
                   <div key={name} className="flex gap-3">
                     <div className="w-12 h-12 rounded-full bg-[#f3f6f8] border border-[#d9d9d9] shrink-0" />
                     <div>
