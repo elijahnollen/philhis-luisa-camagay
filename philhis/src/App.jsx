@@ -94,9 +94,25 @@ export default function PhilHisLuisaCamagayProfile() {
     }
   };
 
+  const stopTimelapse = () => {
+    clearAudioTimers();
+
+    if (timelapseAudioRef.current) {
+      timelapseAudioRef.current.pause();
+      timelapseAudioRef.current.currentTime = 0;
+    }
+  };
+
   const playClap = async () => {
     const audio = clapAudioRef.current;
     if (!audio) return;
+
+    const isPlaying = !audio.paused && !audio.ended;
+    if (isPlaying) {
+      audio.pause();
+      audio.currentTime = 0;
+      return;
+    }
 
     try {
       audio.pause();
@@ -109,7 +125,13 @@ export default function PhilHisLuisaCamagayProfile() {
 
   const playTimelapse = async () => {
     const audio = timelapseAudioRef.current;
-    if (!audio) return;
+    if (!audio || view !== "slides") return;
+
+    const isPlaying = !audio.paused && !audio.ended;
+    if (isPlaying) {
+      stopTimelapse();
+      return;
+    }
 
     clearAudioTimers();
     audio.pause();
@@ -118,24 +140,19 @@ export default function PhilHisLuisaCamagayProfile() {
     const segmentEnd = 100; // 1:40
     const segmentDurationMs = (segmentEnd - segmentStart) * 1000;
 
-    const playSegment = async () => {
-      if (!timelapseAudioRef.current || view !== "slides") return;
+    try {
+      audio.currentTime = segmentStart;
+      await audio.play();
 
-      try {
-        audio.currentTime = segmentStart;
-        await audio.play();
-
-        loopTimeoutRef.current = setTimeout(() => {
-          if (timelapseAudioRef.current) {
-            timelapseAudioRef.current.pause();
-          }
-        }, segmentDurationMs);
-      } catch (err) {
-        console.error("Timelapse sound could not play:", err);
-      }
-    };
-
-    await playSegment();
+      loopTimeoutRef.current = setTimeout(() => {
+        if (timelapseAudioRef.current) {
+          timelapseAudioRef.current.pause();
+          timelapseAudioRef.current.currentTime = 0;
+        }
+      }, segmentDurationMs);
+    } catch (err) {
+      console.error("Timelapse sound could not play:", err);
+    }
   };
 
   useEffect(() => {
