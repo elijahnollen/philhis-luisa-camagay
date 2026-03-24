@@ -155,8 +155,16 @@ export default function PhilHisLuisaCamagayProfile() {
   if (view === "slides") {
     return (
       <div className="min-h-screen w-screen bg-[#0f172a]">
-        <audio ref={clapAudioRef} src="/audio/clap.mp3" preload="auto" />
-        <audio ref={timelapseAudioRef} src="/audio/timelapse.mp3" preload="auto" />
+        <audio
+          ref={clapAudioRef}
+          src={`${import.meta.env.BASE_URL}audio/clap.mp3`}
+          preload="auto"
+        />
+        <audio
+          ref={timelapseAudioRef}
+          src={`${import.meta.env.BASE_URL}audio/timelapse.mp3`}
+          preload="auto"
+        />
 
         <div className="w-screen min-h-screen overflow-hidden">
           <div className="w-full min-h-screen overflow-hidden">
