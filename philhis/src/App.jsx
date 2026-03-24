@@ -23,13 +23,13 @@ export default function PhilHisLuisaCamagayProfile() {
     name: "Ma. Luisa T. Camagay, Ph.D.",
     pronouns: "She/Her",
     headline:
-      "Professor Emeritus of History at the University of the Philippines Diliman | Women’s History | Urban History | Local History",
+      "Professor Emeritus of History at the University of the Philippines Diliman | Women's History | Urban History | Local History",
     location: "Quezon City, National Capital Region, Philippines",
     followers: "12,481 followers",
     connections: "500+ connections",
     school: "University of the Philippines Diliman",
     about:
-      "Historian, educator, and scholar whose work helped foreground women, everyday lives, and urban communities in Philippine history. Known for research on women’s history, local history, and the social history of Manila.",
+      "Historian, educator, and scholar whose work helped foreground women, everyday lives, and urban communities in Philippine history. Known for research on women's history, local history, and the social history of Manila.",
     experience: [
       {
         role: "Professor Emeritus of History",
@@ -41,25 +41,25 @@ export default function PhilHisLuisaCamagayProfile() {
         role: "Professor",
         org: "Department of History, University of the Philippines Diliman",
         period: "Past role",
-        desc: "Taught and mentored students in Philippine history, women’s history, historiography, and related fields.",
+        desc: "Taught and mentored students in Philippine history, women's history, historiography, and related fields.",
       },
     ],
     education: [
-      "Ecole des Hautes Etudes en Sciences Sociales — Doctorat de Troisieme Cycle en histoire",
-      "Universite de Paris I (Pantheon-Sorbonne) — Maitrise en geographie",
-      "University of the Philippines Diliman — MA Teaching",
-      "University of the Philippines Diliman — BS Education, Major in History",
+      "Ecole des Hautes Etudes en Sciences Sociales - Doctorat de Troisieme Cycle en histoire",
+      "Universite de Paris I (Pantheon-Sorbonne) - Maitrise en geographie",
+      "University of the Philippines Diliman - MA Teaching",
+      "University of the Philippines Diliman - BS Education, Major in History",
     ],
     featured: [
       "Working Women of Manila in the Nineteenth Century",
-      "Kasaysayang Panlipunan ng Maynila, 1765–1898",
+      "Kasaysayang Panlipunan ng Maynila, 1765-1898",
       "The City With A Soul",
       "French Consular Dispatches on the Philippine Revolution",
       "More Pinay Than We Admit 2: The Filipina Emerges from the Margins",
     ],
     skills: [
       "Philippine History",
-      "Women’s History",
+      "Women's History",
       "Urban History",
       "Local History",
       "Historical Research",
@@ -79,14 +79,6 @@ export default function PhilHisLuisaCamagayProfile() {
     }
   };
 
-  const stopTimelapse = () => {
-    clearAudioTimers();
-    const audio = timelapseAudioRef.current;
-    if (audio) {
-      audio.pause();
-      audio.currentTime = 0;
-    }
-  };
 
   const stopAllAudio = () => {
     clearAudioTimers();
@@ -147,8 +139,21 @@ export default function PhilHisLuisaCamagayProfile() {
   };
 
   useEffect(() => {
+    const clapAudio = clapAudioRef.current;
+    const timelapseAudio = timelapseAudioRef.current;
+
     return () => {
-      stopAllAudio();
+      clearAudioTimers();
+
+      if (clapAudio) {
+        clapAudio.pause();
+        clapAudio.currentTime = 0;
+      }
+
+      if (timelapseAudio) {
+        timelapseAudio.pause();
+        timelapseAudio.currentTime = 0;
+      }
     };
   }, []);
 
@@ -185,7 +190,7 @@ export default function PhilHisLuisaCamagayProfile() {
                   className="px-4 h-10 rounded-full border border-white/35 bg-white/10 text-white text-[14px] font-semibold backdrop-blur-sm shadow-lg hover:bg-white/20 transition"
                   title="Play clap sound"
                 >
-                  👏
+                  Clap
                 </button>
 
                 <button
@@ -193,7 +198,7 @@ export default function PhilHisLuisaCamagayProfile() {
                   className="px-4 h-10 rounded-full border border-white/35 bg-white/10 text-white text-[14px] font-semibold backdrop-blur-sm shadow-lg hover:bg-white/20 transition"
                   title="Play timer sound"
                 >
-                  🕒
+                  Timer
                 </button>
               </div>
 
@@ -203,7 +208,7 @@ export default function PhilHisLuisaCamagayProfile() {
 
               <div className="relative max-w-5xl">
                 <div className="inline-block px-5 py-2 rounded-full border border-white/25 bg-white/10 text-white/95 text-sm md:text-base font-semibold tracking-wide backdrop-blur-sm shadow-lg">
-                  History • Conversation • Culture
+                  History | Conversation | Culture
                 </div>
 
                 <div className="mt-6 text-[56px] md:text-[88px] leading-[0.95] font-extrabold tracking-tight text-white drop-shadow-[0_6px_24px_rgba(0,0,0,0.35)]">
@@ -211,7 +216,7 @@ export default function PhilHisLuisaCamagayProfile() {
                 </div>
 
                 <p className="mt-8 text-[24px] md:text-[38px] leading-[1.25] text-white font-semibold max-w-5xl mx-auto drop-shadow-[0_4px_18px_rgba(0,0,0,0.28)]">
-                  “{slides[currentSlide].body}”
+                  "{slides[currentSlide].body}"
                 </p>
 
                 <div className="mt-10 text-[26px] md:text-[36px] font-bold tracking-wide text-[#fde68a] drop-shadow-[0_4px_18px_rgba(0,0,0,0.25)]">
@@ -321,12 +326,12 @@ export default function PhilHisLuisaCamagayProfile() {
                       Professor Emeritus of History at the University of the Philippines
                       Diliman
                     </div>
-                    <div className="text-[12px] text-[#5e5e5e] mt-1">1d • 🌐</div>
+                    <div className="text-[12px] text-[#5e5e5e] mt-1">1d | Public</div>
                   </div>
                 </div>
 
                 <p className="mt-4 text-[22px] md:text-[28px] leading-tight font-medium text-[#1d2226]">
-                  “There is only one past, but many histories”
+                  "There is only one past, but many histories"
                 </p>
 
                 <div className="mt-5 h-[220px] rounded-lg border border-[#d9d9d9] bg-gradient-to-br from-[#f7fbff] to-[#e8f3ff] flex items-center justify-center px-8 text-center">
@@ -362,7 +367,7 @@ export default function PhilHisLuisaCamagayProfile() {
 
                   <div className="space-y-3">
                     {[
-                      { name: "Charl Christopher Peñada", comment: "yas queen!" },
+                      { name: "Charl Christopher Penada", comment: "yas queen!" },
                       { name: "Krystal Claire Alvarez", comment: "go girl" },
                       { name: "Elijah Crisehea Nollen", comment: "iconic line" },
                     ].map((item, index) => (
@@ -493,3 +498,4 @@ export default function PhilHisLuisaCamagayProfile() {
     </div>
   );
 }
+
